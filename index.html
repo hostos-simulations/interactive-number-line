@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Number Line Simulation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Interactive Number Line Simulation</h1>
+        
+        <div class="mode-switcher">
+            <button class="mode-btn active" id="sandbox-mode-btn">Sandbox Mode</button>
+            <button class="mode-btn" id="quiz-mode-btn">Quiz Mode</button>
+        </div>
+
+        <!-- Sandbox Mode Interface -->
+        <div id="sandbox-mode-view">
+            <div class="input-area">
+                <div class="input-group">
+                    <label for="start-number">Starting Number</label>
+                    <input type="number" id="start-number" value="10">
+                </div>
+                <div class="input-group">
+                    <label for="add-number">Number to Add</label>
+                    <input type="number" id="add-number" value="-15">
+                </div>
+                <button id="visualize-btn">Visualize</button>
+            </div>
+        </div>
+
+        <!-- Quiz Mode Interface -->
+        <div id="quiz-mode-view" class="hidden">
+             <div class="quiz-question" id="quiz-question-text"></div>
+             <div class="feedback" id="feedback-message"></div>
+             <div class="input-area">
+                <div class="input-group">
+                    <label for="answer-input">Your Answer</label>
+                    <input type="number" id="answer-input" placeholder="Enter result">
+                </div>
+                <button id="check-answer-btn">Check Answer</button>
+                <button id="next-question-btn" class="secondary hidden">Next Question</button>
+            </div>
+        </div>
+        
+        <!-- Shared display areas -->
+        <div id="equation"></div>
+        <div id="explanation-text" class="explanation hidden"></div>
+        <div class="number-line-container" id="number-line-container">
+            <div class="number-line" id="number-line">
+                <!-- Ticks, labels, and arrow will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
