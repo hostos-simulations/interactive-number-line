@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- DOM Elements ---
-    const sandboxModeBtn = document.getElementById('sandbox-mode-btn');
-    const quizModeBtn = document.getElementById('quiz-mode-btn');
-    const sandboxView = document.getElementById('sandbox-mode-view');
-    const quizView = document.getElementById('quiz-mode-view');
+    const sandboxModeBtn = document.getElementById('sandbox-tab'); // Updated ID for clarity
+    const quizModeBtn = document.getElementById('quiz-tab'); // Updated ID for clarity
+    const sandboxView = document.getElementById('sandbox-panel'); // Updated ID for clarity
+    const quizView = document.getElementById('quiz-panel'); // Updated ID for clarity
     
     // Sandbox elements
     const startNumberInput = document.getElementById('start-number');
@@ -30,19 +30,34 @@ document.addEventListener('DOMContentLoaded', () => {
     sandboxModeBtn.addEventListener('click', () => switchMode('sandbox'));
     quizModeBtn.addEventListener('click', () => switchMode('quiz'));
 
+    // --- ACCESSIBILITY UPDATE: Manage ARIA attributes and focus on mode switch ---
     function switchMode(mode) {
         if (mode === 'sandbox') {
+            // Update button styles and ARIA states
             sandboxModeBtn.classList.add('active');
+            sandboxModeBtn.setAttribute('aria-selected', 'true');
             quizModeBtn.classList.remove('active');
+            quizModeBtn.setAttribute('aria-selected', 'false');
+            
+            // Update panel visibility
             sandboxView.classList.remove('hidden');
             quizView.classList.add('hidden');
+            
             clearDisplays();
             runSandbox();
+            // Set focus to the first input for better keyboard navigation
+            startNumberInput.focus(); 
         } else { // quiz mode
+            // Update button styles and ARIA states
             quizModeBtn.classList.add('active');
+            quizModeBtn.setAttribute('aria-selected', 'true');
             sandboxModeBtn.classList.remove('active');
+            sandboxModeBtn.setAttribute('aria-selected', 'false');
+
+            // Update panel visibility
             quizView.classList.remove('hidden');
             sandboxView.classList.add('hidden');
+            
             clearDisplays();
             startNewQuestion();
         }
