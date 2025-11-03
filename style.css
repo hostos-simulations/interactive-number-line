@@ -29,7 +29,7 @@ h1 {
     font-weight: 600;
 }
 
-/* --- UPDATED: Mode Switching Tabs for High Contrast --- */
+/* --- UPDATED: Mode Switching Tabs for Accessibility & High Contrast --- */
 .mode-switcher {
     display: flex;
     justify-content: center;
@@ -37,7 +37,14 @@ h1 {
     background-color: #e9ecef;
     border-radius: 10px;
     padding: 5px;
+    /* Reset list styling */
+    list-style: none; 
 }
+.mode-switcher li {
+    flex: 1; /* Make list items take up equal space */
+    display: flex;
+}
+
 .mode-btn {
     padding: 12px 20px;
     border: none;
@@ -48,14 +55,20 @@ h1 {
     cursor: pointer;
     border-radius: 8px;
     transition: background-color 0.3s, color 0.3s;
-    flex: 1;
+    width: 100%; /* Ensure button fills the list item */
 }
 .mode-btn.active {
     background-color: #007bff; /* Solid blue background for active state */
     color: #ffffff; /* White text for maximum contrast */
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12); /* Subtle shadow for depth */
 }
+/* Add a visible focus ring for keyboard users */
+.mode-btn:focus-visible {
+    outline: 2px solid #0056b3;
+    outline-offset: 2px;
+}
 /* --- END OF UPDATE --- */
+
 
 /* Area for user inputs and controls */
 .input-area {
